@@ -1,0 +1,12 @@
+1) TITEL IN GENERAL: Genetically encoded and evolutionable spin sensors
+
+2) POSSIBLE BASES: LOV domains, Cryptochromes, [YFP, MFP, GFP], porfirins, Nanoparticles - anything which produces electron pairs
+
+3) FIRST SUBTOPIC: ODMR on these systems, optical effects based on e spins driven by magnetic resonance
+
+4) 2nd AND MORE IMP SUBTOPIC: Chemical yield driven by magnetic resonance - key for bio applications
+
+5) PLAN:
+	- review to choose which type of chemical is more convenient to build on
+	- design a droplet - based screening system
+	- start a directed evolution on the chosen chemical using the maid system

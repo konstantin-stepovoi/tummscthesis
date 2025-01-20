@@ -1,0 +1,492 @@
+\documentclass[12pt,a4paper]{article}
+\include{preambula}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage[usenames]{color}
+\usepackage[T2A]{fontenc}
+\usepackage[OT1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+\floatsetup[figure]{capposition=bottom}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage{calc}
+\usepackage{wrapfig}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{subfigure}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\hypersetup{colorlinks,
+linkcolor = black}
+\newcommand{\angstrom}{\text{\normalfont\AA}}
+\newcommand{\sectionfont}{\bfseries}
+\newcommand{\subsectionfont}{\normalsize}
+\usepackage{indentfirst}
+\setlength{\parskip}{1em}
+%%\pgfplotsset{compat=1.17}
+\usepackage{lipsum}
+\usepackage{xcolor}
+\usepackage{hyperref}
+ % Цвета для гиперссылок
+\definecolor{linkcolor}{HTML}{799B03} % цвет ссылок
+\definecolor{urlcolor}{HTML}{799B03} % цвет гиперссылок
+\title{Theoretical estimation of the possibility of controlling the fluorescence of proteins of the LOV family using microwave radiation}
+\author{Konstantin Stepovoi}
+\date{November 2024}
+\begin{document}
+
+\maketitle
+
+\section{Сentral idea}
+For the first time (in my memory), the magnetosensitivity of proteins of the LOV family was demonstrated in experimental work [1]. In addition to demonstrating the quenching of protein fluorescence by a magnetic field, the authors also suggested which mechanism is responsible for this effect. In their work, the authors suggest that the observed result can be described using the radical pair model. In this model [2], the magnetic field does not change the course of chemical reactions, but only slightly modifies the kinetic constants of reactions, which leads to a shift in equilibrium from reactants to products. It is believed that the magnetic field affects the splitting of sublevels according to the magnetic moment when the molecule is in the triplene (T) state. Because of this, the T state is stabilized, and the molecule can no longer enter into certain reactions that require both participants to have a certain orbital symmetry, which can only be achieved if both reactants are in the singlet state. This mechanics of the effect suggests that by adding microwaves to the system, which could pump electron shells between states with different values of the number m (-1, 0, 1), which I will further call $T_+, T_0, T_-$, it is possible to achieve even greater stabilization of T state and thus obtain an even stronger amplitude of magnetosensitivity. 
+
+At first glance, it seems that this effect is quite simple to check - it is enough just to choose the optimal value of the magnetic field \textbf{B} and the intensity of the microwaves \textbf{$g = I_{ir}(t)$}, and experimentally check whether this works. However, in an experiment with continuously adjustable parameters, it is physically impossible to sort through all possible values, which will allow you to observe the effect most noticeably. Therefore, I would like to estimate in advance at which installation settings we are most likely to get a successful result. And for this, in turn, it is necessary to adapt the model of radical pairs to the case of fluorescent proteins.
+
+\section{Choosing a protein to study}
+
+First of all, I would like to highlight two questions: what properties do the proteins proposed for study have and why, in my opinion, it will not be possible to apply the mechanism of radical pairs directly to any of them. The authors of the original idea identify three families of proteins capable of this effect: these are, of course, cryptochromes, proteins of the LOV family and proteins of the GFP family. 
+
+What do they have in common? Cryptochromes, like LOV, belong to flavoproteins, that is, they contain flavin molecules in various modifications (as a rule, FMN) as a coenzyme. In GFP proteins, on the contrary, a chromophore molecule is responsible for fluorescence, which has nothing in common with flavins and is obtained as a result of post-translational modifications of the side groups of several amino acids. There is a feeling (which will turn out to be true later) that flavin is responsible for magnetic field recognition. Therefore, flavin, firstly, will become the main character of my reasoning (and its properties will be described later) and for the same reason, it is flavin that the authors of the original article artificially sew it to GFP proteins so that they can also become magnetically sensitive.
+
+For further description and subsequent experiments, we will choose exactly LOV proteins, for the following set of reasons:
+\begin{enumerate}
+    \item \textbf{Cryptochromes} are biologically photosensitive in their main function, but they have light reception and magnetic field reception carried out by different reaction centers. The role of the light-collecting chromophore in cryptochromes is performed by \textbf{pterin}. When a quantum of light is absorbed by pterine, its excitation is transmitted to the FAD molecule, which plays the role of a "reaction center". The starting point in the cryptochrome operating cycle is the completely oxidized state of FMN. The absorption of a blue quantum of light leads to single-electron photoreducation, resulting in the formation of a semiquinone radical form, taking electron from surrounding tryptophans. Thus, 2 different molecules are responsible for the excitation by light and for the reaction to the magnetic field - therefore, it is possible to describe its behavior, but it is a little more difficult.
+    \item \textbf{GFPs} they generally do not have magnetosensitivity in many of their modifications, therefore flavin is sewn to them from the side. Again, in this case, different molecules are responsible for the fluorescent and magnetic properties. This can be described later, but a little later.
+    \item \textbf{LOV proteins} They use flavin as their chromophore. So we will be working with the same molecule. Therefore, I will make my first attempt to describe such a system with AsLOV2, which the authors of the original experiment started with.
+\end{enumerate}
+
+Why do we have to re-describe this protein with your own hands, instead of taking a ready-made radical model?  The reason is that the original model of radical pairs: 1) it is not adapted to the task of measuring the intensity of fluorescence, they only talk about the equilibrium concentrations of different chemicals, 2) Substances are considered there as if "in solution", and in our case everything is immobilized inside one protein, 3) The possibility of artificially pumping flavins between m states is not considered (yet...)
+
+\newpage
+\section{What does Flavin do in AsLOV2}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.7\textwidth]{Stuct.png}
+\end{center}
+\end{figure}
+
+Now let's describe what flavin does and in what states it is there. Suppose we now have just 1 piece of AsLOV2, and we start irradiating it with light with a wavelength of 450 - 470 nanometers.
+Let's denote the initial, unexcited state by \textbf{W}.
+\begin{enumerate}
+    \item When flavin is irradiated with light with a wavelength of 450 - 470 nanometers$^3$, we precisely fall into the flavin absorption band corresponding to the $S_0 \longrightarrow S_1$ transition. Let's call the excited state of flavin in $S_1$ simply \textbf{S}, The time profile of the exciting beam is denoted by \textbf{f(t)}.
+    \item From the S state we add two more paths: Firstly, relaxation into the W state with \textbf{photon emission}, or \textbf{intrasystem conversion} due to spin-orbit interactions into the triplet state T1. Let's just call it \textbf{T}.
+    Qualitatively, this is explained by the redistribution of electron density between C = O and C = N bonds. By the way, the quantum yield and the approximate speed of this conversion have already been calculated by good people for us [4], [6].
+    \item Now a new character is added to the game - a sulfur atom on the side group of the cysteine molecule located next to the flavin chromophore. Having got rid of excess hydrogen, the sulfur radical forms a radical pair with flavin in S or T form. Actually, it is this radical pair that we will act on with the help of a magnetic field, removing the energy degeneracy of the state T and thus making it more stable.
+    \item Let's denote the state of the singlet radical pair by \textbf{P}, and the triplet radical pair by \textbf{M}. Unlike a single flavin (designations S and T), due to the presence of a heavy and large sulfur atom nearby, the intra-system conversion is more likely to follow the path from a triplet to a singlet. At the same time, from the triplet state, the radical pair is more likely to collapse into two free radicals (denoted by \textbf{F} from the word 'free'), and from the singlet state - to form a new C - S bond, thus forming a \textbf{flavin - (C4a) - cystenyl adduct} (lets mark it as \textbf{A}). Why is this the case? I have not been able to find accurate information, but intuitively it seems that such a course of adduct formation is influenced by the spin ban on the formation of bonds from a triplet pair. There is a way back from free radicals - to form a radical pair, and from the state of the already formed C-S bond - it remains only to slowly dissociate due to natural hydrolysis. Which lasts a very long time and is the cause of fluorophore \textbf{bleaching} [5].
+    
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{S-T.png}
+\end{center}
+\end{figure}
+
+\item To complete the picture, it remains to describe what happens when an external magnetic field B and IR radiation are applied to the \textbf{M} state, the time profile of which I have designated as \textbf{g(t)}. From the state of the electronic pair M, which now represents a sublevel with m = 0, that is, $T_1^0$, you can either automatically relax into a state where both spins are located along the field (I'll designate it as \textbf{R}, $T_1^-$ in honor of the word relaxed) or painfully climb to the unfavorable state \textbf{E} (from the word exited, $T_1^+$). from all three states, you can move higher using \textbf{g(t)}, or relax downwards. I allow in-system conversion to the P - state from M, but I forbid it from \textbf{R} and \textbf{E} due to spin saving rules. But I freely allow the transition from all three states to free radicals, since the principle of conservation of the spin number is not important here, although the kinetic constants will be slightly different.
+\end{enumerate}
+
+\textbf{So, now that we have written down all the possible transitions, we can make a diagram:}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{diagram.png}
+\end{center}
+\end{figure}
+
+\textbf{So, now that we have written down all the possible transitions, we can make a diagram:}
+
+Note that it is precisely because there is such a complex multi-stage reaction scheme that the usual equations for a radical mechanism will not suit us. But this is not a problem - now we can write our own kinetic equations for each step.
+
+\newpage
+
+\section{Solving a system of kinetic equations}
+
+\begin{equation*}
+ \begin{cases}
+   \frac{d}{dt}\hbar\omega_{em} = k_{em}S 
+   \\
+    \frac{d}{dt}A = k_bP + k_{b'}M - k_hA
+   \\
+   \frac{d}{dt}W = k_{em}S + k_hA - k_{ex}W
+   \\
+   \frac{d}{dt}S = k_{ex}W + \bar \mu T + \bar k_s P - (k_{em} + \mu + k_s)S
+   \\
+   \frac{d}{dt}T = \mu S + \bar k_t M - (\bar \mu + k_t)T
+   \\
+   \frac{d}{dt}P = k_sS + \bar \gamma M - (k_b + \bar k_s + \gamma)P
+   \\
+   \frac{d}{dt}M = k_tT + \gamma P + \bar \beta E + \beta R + k_a^m F - (k_{b'} + \bar k_t + \bar \gamma + \beta + \bar \beta + k_m^d)M
+   \\
+   \frac{d}{dt}E = \beta M + k_a^eF - (\bar \beta + k_d^e)E
+   \\
+   \frac{d}{dt}R = \bar \beta M + k_a^rF - (\beta + k_d^r)R
+   \\
+   \frac{d}{dt}F = k_d^eE + k_d^mM + k_d^rR - (k_a^e + k_a^m + k_a^r)F
+ \end{cases}
+\end{equation*}
+
+It is a homogeneous system of linear differential equations. It obviously has only a trivial solution $\vec x = \vec 0 \in \mathds{R}^9$ for the equilibrium condition, since the system inherently requires pumping at least one of the light sources. But we are not interested in the equilibrium solution, but in the dynamics of the system and its dependence on the initial conditions. Let's throw out the first equation from the system due to its obviousness, and so that the system does not have zero on the main diagonal, otherwise python will not work properly. Assemble a matrix of coefficients:
+
+{\fontsize{8}{12}\selectfont
+\[
+\frac{d}{dt}
+\begin{bmatrix}
+A \\
+W \\
+S \\
+T \\
+P \\
+M \\
+E \\
+R \\
+F
+\end{bmatrix}
+=
+\begin{bmatrix}
+-k_h & 0 & 0 & 0 & k_b & k_{b'} & 0 & 0 & 0 \\
+0 & -k_{ex} & k_{em} & 0 & 0 & k_h & 0 & 0 & 0 \\
+0 & k_{ex} & -(k_{em} + \mu + k_s) & \bar{\mu} & \bar{k}_s & 0 & 0 & 0 & 0 \\
+0 & 0 & \mu & -(\bar{\mu} + k_t) & 0 & \bar{k}_t & 0 & 0 & 0 \\
+0 & 0 & k_s & 0 & -(k_b + \bar{k}_s + \gamma) &  \bar{\gamma} & 0 & 0 & 0 \\
+0 & 0 & 0 & k_t & \gamma & -Q & \bar{\beta} & \beta & k_a^m \\
+0 & 0 & 0 & 0 & 0 & \beta & -(\bar{\beta} + k_d^e) & 0 & k_a^e \\
+0 & 0 & 0 & 0 & 0 & \bar{\beta} & 0 & -(\beta + k_d^r) & k_a^r \\
+0 & 0 & 0 & 0 & 0 & k_d^m & k_d^e & k_d^r & -Y
+\end{bmatrix}
+\begin{bmatrix}
+A \\
+W \\
+S \\
+T \\
+P \\
+M \\
+E \\
+R \\
+F
+\end{bmatrix}.
+\]
+}
+
+Where $Q = k_{b'} + \bar{k}_t + \bar{\gamma} + \beta + \bar{\beta} + k_m^d$, 
+
+$Y = k_a^e+k_a^m+k_a^r$
+
+Having solved this system, we could express the fluorescence intensity over time as\newline$I_{fluo}(t) \sim k_{em} \cdot S(t)$. Perhaps we could solve this system as honest physicists in a general way, and it would be wonderful if we could imagine the state of the system at any given time in the exponential form  $\vec x(t) = e^{\hat A t}\cdot \vec x (t = 0)$,  where solution $\vec x \in R^9$ are concentration of 9 states of all chemicals, $e^{\hat A t} = V e^{\hat \lambda t} V^{-1} \text{and } \hat \lambda, V$ are matrices of eigenvalues and eigenvectors, respectively. But unfortunately, we will not be able to solve the \textbf{characteristic equation} for $\lambda$, because it will be a polynomial of the 9th degree, which obviously does not have an exact solution in radicals, and I would really not like to spend hours decomposing the roots with my own hands (I tried). This means that we will have to do it numerically, but first we need to evaluate for general reasons or find in the articles the values of all kinetic constants for all reactions.
+
+
+\section{Kinetic coefficients estimation}
+LET'S AGREE IN ADVANCE that f(t), g(t) have an intensity dimension (that is, watts per square meter), and the wavelengths of these pumps have already been agreed in advance by us with resonant absorption lines (that is, 450-470 nanometers for f and $\hbar \omega_{IR} = g\mu_{b}\vec B$ for g)
+
+\begin{enumerate}
+    \item $k_{ex} = k_0\cdot N_{photons} = \frac{\sigma \lambda}{hc} f(t) = \frac{5*10^{-21} \lambda}{hc} f(t) = 0.0113 \cdot f(t),$ $\sigma$ given in [7] 
+    \item $k_{em} = \frac{\Phi}{\tau} = 6.5*10^7s^{-1}$ [8]
+    \item $k_h(T = 20^oC) = 1/10s = 0.1 s^{-1}$ [5]
+    \item $k_b = \frac{\Phi}{12 ns} = \frac{0.3*10^9}{12} s^{-1} = 2.5 * 10^7$ [9],
+    \newline
+    $k_{b'} = \frac{\Phi}{650 ns} = \frac{0.6*10^9}{650} s^{-1} = 9.2*10^5 s^{-1}$
+    \item Singlet-to-triplet intrasystem conversion coefficients:\newline
+    $\mu = 1/2.8 ns = 3.6*10^8 s^{-1} [9]$ \newline
+    $\gamma = 1/1.5 ns = 6.7*10^8 s^{-1} [5]$
+    \item Back conversion (triplet to singlet) coefficients I did not managed to find but we can estimate them from physics principle:
+    $\bar \mu = \mu \cdot e^{-\frac{\Delta E}{k_{bol}T}} = \mu \cdot * 5 * 10^{-4} = 1.8 * 10^5 s^{-1} $
+    $\bar \gamma = \gamma \cdot e^{-\frac{\Delta E}{k_{bol}T}} = 3.4 * 10^5 s^{-1}$
+    (as far we know from [10] that E gap is around 0.2 eV)
+    \item Now we need to estimate the time it takes for an electron pair to form from a single flavin. In [4] is stated that for T1 flavin characteristic time of pair formation takes around microsecond. Still 3 parameters are uncovered.
+    $k_t \approx 10^6 s^{-1}$
+    and we can estimate other parameters from the fact that:
+\[k_{S1 \to \text{EP1}} + k_{S1 \to \text{S0}} + k_{S1 \to \text{T1}} =\frac{1}{2.8 ns} \]
+
+thus $k_s = 1.36*10^{8} s^{-1}$, $\bar k_s = 5*10^{5} s^{-1}, \bar k_t = 5*10^{5} s^{-1}$
+\item Now we need to estimate the constants corresponding to the transitions between magnetic sublevels. We know in advance that the energy difference between the sublevels will be exactly equal to $g\mu_b B $, and estimating the length of radical pair of 5 $\angstrom$[13] (4.2 actually)
+\[\tau \cdot \Delta E_{dip}  = \frac{\hbar}{2} \Rightarrow \bar \beta = \frac{\mu_0(g\mu_b)^2}{4\hbar \pi r^2} \approx 5*10^{11}\]
+\[\beta = \beta_0N_{IR} = \frac{\sigma}{g\mu B}g(t) \approx 530 \frac{g(t)}{B} \]
+
+\item We will estimate the values of the dissociation-association constants of free radicals simply from the consideration that the recombination reaction of free radicals is not limited by anything other than vibrational motions and occurs in times of the order of nanoseconds [12]. And the value of the energy gap between the electron pair and free radicals is assumed to be 0.2 eV, and the rise or descent on the energy scale simply stabilizes or destabilizes different states:
+\[k_a^m \approx 5*10^8 s^{-1} \Rightarrow k_d^m = k_a^m \cdot e^{\frac{-0.2 eV}{kT}} = 2.4\cdot10^5\]
+\[k_d^e = k_d^m\cdot e^{2\mu B}, k_a^e = k_a^m\cdot e^{ - 2\mu B}\]
+\[k_d^r = k_d^m\cdot e^{-2\mu B}, k_a^r = k_a^m\cdot e^{2\mu B}\]
+\end{enumerate}
+\section{Numerical solution}
+
+Having estimated all the necessary constants, we can reassemble the matrix, leaving only the numbers and three unknowns: $f(t), g(t), \vec B$
+{\fontsize{10}{14}\selectfont
+\[
+\frac{d}{dt}
+\begin{bmatrix}
+A \\
+W \\
+S \\
+T \\
+P \\
+M \\
+E \\
+R \\
+F
+\end{bmatrix}
+=
+\begin{bmatrix}
+-0.1 & 0 & 0 & 0 & 2.5e7 & 9.2e5 & 0 & 0 & 0 \\
+0 & -0.012f & 6.5e7 & 0 & 0 & 0.1 & 0 & 0 & 0 \\
+0 & 0.012f & -5.6e8 & 1.8e5 & 5e5 & 0 & 0 & 0 & 0 \\
+0 & 0 & 3.6e8 & -1.18e6 & 0 & 5e5 & 0 & 0 & 0 \\
+0 & 0 & 1.36e8 & 0 & -6.96e8 & 0 & 0 & 3.4e5 & 0 \\
+0 & 0 & 0 &1e6 & 6.7e8 & -5e11-Q & 5e11 & Q & 5e8 \\
+0 & 0 & 0 & 0 & 0 & Q & -5e11 & 0 & 5e8 \\
+0 & 0 & 0 & 0 & 0 & 5e11 & 0 & -2.4e5-Q & 5e8 \\
+0 & 0 & 0 & 0 & 0 & 2.4e5 & 2.4e5 & 2.4e5 & -15e8
+\end{bmatrix}
+\begin{bmatrix}
+A \\
+W \\
+S \\
+T \\
+P \\
+M \\
+E \\
+R \\
+F
+\end{bmatrix}.
+\]
+}
+
+Where $Q = 530\frac{g}{B}$
+
+
+
+The result is a sparse matrix, with coefficients that can differ by many orders of magnitude. 
+For f(t) I will take the approximate intensity of the LED, which is supposedly used as a pump source, I will convert it into watts per square meter and get approximately $2*10^6$
+
+Then begins a series of sufferings, which can be succinctly described as "a person who took a course in computational mathematics two years ago painfully remembers what was in it".
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{insanity.png}
+\end{center}
+\end{figure}
+
+
+\begin{enumerate}
+    \item We are trying to solve it using the Runge - Kutta method, we get a code that runs for 4 hours. We recall that explicit methods are not friendly with rigid systems. Switching to the Rado algorithm.
+    \item We solve the system using the Rado algorithm, but we get utter nonsense in which substances increase indefinitely. We understand that we need to add a boundary condition $\forall t \sum \vec y_i = 1$.
+    \item We add this condition, and we see that it has not become easier. We check the eigenvalues for different values of g, B, and see complex values there. And this cannot be the case - in kinetic equations, the eigenvalues for any parameter values must remain valid and negative. 
+    \item We double-check and yes, I incorrectly transferred the numerical values to the program, we redo the work in a circle.
+\end{enumerate}
+
+\subsection{First solution}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.95\textwidth]{graphs.png}
+\end{center}
+\end{figure}
+
+Let's check the boundary conditions:
+\begin{enumerate}
+    \item When there is no magnetic field, it doesn't really matter if there is IR radiation. There is nothing to transfer between levels, because there is simply no splitting. This is shown in the first and second graphs
+    \item When there is a magnetic field and, accordingly, splitting, then most of the molecules accumulate in the \textbf{R} or \textbf{E} levels. which one of them depends on the applied IR.
+    \item But due to the fact that almost everything, regardless of the conditions, sooner or later comes to the state of adduct A, that is, the fluorophore burns out (pay attention to how quickly \textbf{S} falls), there may be an effect from the magnetic field, but we do not notice it. Which, by the way, is consistent with the results of the experiments - their intensity also dropped sharply and could no longer respond to the magnetic field.
+\end{enumerate}
+
+\subsection{MagLOVs solution} 
+Okay, now I want to understand what coefficients in the proposed equations will change if we take a non-original protein (which did not work in the experiment either).
+
+To do this, we take in one hand the sequence of the original AsLOV2, the sequence of MagLOV, in the other hand the biopiton and begin to compare them to estimate how they changed their protein  by direct evolution. However, it should be clarified that the authors do not provide us with the structure of MagLOV itself, but only the plasmid that they injected into the cells. But this is also a solution, because on the plasmid we can use tools to find the area that will be translated.
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{plasmid.png}
+\end{center}
+\end{figure}
+
+
+\begin{table}[h!]
+\begin{tabular}{cccc}
+No  &LOV2& OrigAA& MutAA \\ \hline
+13 & T & T      & V     \\
+47 & \textbf{C} & A      & P     \\
+93 & L & L      & V     \\
+110 & G & Q      & K     \\
+125 & G & G      & K     \\
+137 &  D & D      & M     \\
+\end{tabular}
+\end{table}
+
+Now it would be nice to understand where the amino acids they have mutated are geometrically located. To do this, we load the sequents into the AlphaFold and then select those areas that have undergone mutation. Then let's look at the structure of the original LOV domain, and find which amino acids directly interact with the fluorophore. The illustration shows site 46-50, which binds to flavin on the original protein and on the mutation result.
+
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.99\textwidth]{models.png}
+\caption{3D models of proteins: a)original signal transfering domain, yellow part responsible for Flav binding, b) mutant protein without C in 47 position (green) }
+\end{center}
+\end{figure}
+
+Summarizing the above, we come to the conclusion that the result of evolution was the disposal of the system from component A at all, since there is no more cysteine with which we will form a permanent covalent bond. But instead, we now have a Proline molecule that can probably participate in a radical reaction, but not so effectively. Also, the presence of a heavy atom nearby no longer increases the likelihood of an in-system conversion, which means that you need to make adjustments to the coefficients:
+
+\begin{enumerate}
+    \item The first row and the first column should be deleted completely
+    \item Coefficients $\mu, \gamma$ shoud now become equal
+\end{enumerate}
+
+We run the simulation again, taking into account the corrections, and get a satisfactory result (figure below):
+
+\begin{enumerate}
+    \item At first I thought that the solution for cases without a magnetic field grows indefinitely, but then I realized that it reaches a plateau just later. This is not visible on the graph because of the desire to keep the scale on all four pictures.
+    \item The presence of a magnetic field greatly lowers the level of this very plateau. This is what the authors of the article called fluorescence quenching. In fact, it is not completely extinguished, just the equilibrium value is much less. Most of the electron pairs now fall into the E state, from which additional energy must be expended to return to M, and from there they go to relax with the emission of a gamma quantum.
+    \item When we apply their wave, we sign the electrons back a little to the transition from the E to the M state, which in theory should lead to an increase in fluorescence. But this increase is quite small compared to the difference between cases without a magnet and with a magnet.
+    \item \textbf{Most importantly,} At a qualitative level, it can be concluded that the stronger the magnetic field induction, the deeper the potential pit for electron pairs and the stronger the fluorescence will be extinguished. But on the other hand, the greater the intensity of the IR wave we will have to apply to the system in order to expel electrons from this pit and observe the effect of modulating the quenching from the IR. I decided to do a simulation on a grid of parameters g, B in the range of capacities potentially achievable in our lab, and realized that the optimal parameters from which it makes sense to start trying are 30 mil and a single-watt LED focused on a 1 square millimeter area. Well, approximately.
+\end{enumerate}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.9\textwidth]{grnew.png}
+\end{center}
+\end{figure}
+\section{And what for did I all this work?}
+
+\begin{enumerate}
+    \item At a minimum, we now have a model that, albeit crookedly, explains the reasons: fluorescence quenching, dye burnout, and what the effect of IR field modulation will look like.
+    \item We roughly understand which parameters of the experiment should be started with the MagLOV protein and then we can move away from there.
+    \item The main thing: We have worked out a method by which we can now begin to consider the behavior of other proteins, in particular, cryptochromes. Now, in fact, it remains for me to write a coefficient matrix for a new protein and insert it into the existing algorithm
+\end{enumerate}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{graaa.png}
+\caption{A three-dimensional graph of how effectively the simulation works using an IR wave depending on the parameters g and B}
+\end{center}
+\end{figure}
+
+
+\newpage
+\section{Articles and links}
+\begin{enumerate}
+\item\href{https://andrewgyork.github.io/gfp_magnetofluorescence/#scarlet_FMN_figure}{Magnetic control of the brightness of fluorescent proteins}
+\item \href{https://doi.org/10.1146/annurev-biophys-032116-094545}{The Radical-Pair Mechanism of Magnetoreception}
+\item \href{https://www.nature.com/articles/s41598-024-75239-x}{$S_0 \longrightarrow S_1$ flavin translation}
+\item \href{https://pmc.ncbi.nlm.nih.gov/articles/PMC2711383/}{$S_1 \longrightarrow T_1$ intrasystem e - density conversion}
+\item \href{https://pubmed.ncbi.nlm.nih.gov/23066024/}{C-S adduct hydrolisis lifetime}
+\item \href{https://www.nature.com/articles/s41467-024-51461-z?fromPaywallRec=false}{LOV - domain dynamics}
+\item \href{https://epub.uni-regensburg.de/12299/1/Tyagi_Dissertation.pdf}{Figure 3.2 here - absorbrion cross-section}
+\item \href{https://pubmed.ncbi.nlm.nih.gov/36890834/}{flavin fluo properties}
+\item \href{https://pubs.acs.org/doi/10.1021/acs.jpclett.6b02075}{CrLOV2 kinetics}
+\item \href{https://pubs.acs.org/doi/10.1021/ja049553q}{adduct formation koefficients}
+\item \href{https://wires.onlinelibrary.wiley.com/doi/10.1002/wcms.1541}{Spectroscopy and modelling data}
+\item \href{https://pubmed.ncbi.nlm.nih.gov/31187821/}{Recombination}
+\item 
+\href{https://pmc.ncbi.nlm.nih.gov/articles/PMC30595/}{Cys}
+\end{enumerate}
+
+\newpage
+\section{Cryptochromes reactions}
+
+\textbf{A reminder for myrself: further calculation assumes that we activate the protein as intended by Mother Nature, that is, through the resonant absorption frequency of Pterin. If suddenly we don’t do this, but immediately irradiate the flavin, then the first 2 equations must be removed and replaced with what was in the previous document for LOV}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=0.96\textwidth]{CHR2.png}
+\end{center}
+\end{figure}
+
+
+
+
+
+\begin{equation*}
+ \begin{cases}
+   \frac{d}{dt}\hbar\omega_{em} = k_{em}S 
+   \\
+\frac{d}{dt}\pi = \bar k_{ex}\Omega + k_{em}S - k_{ex}f(t)\pi
+\\
+\frac{d}{dt}\Omega = k_{em}S - k_c\Omega W
+\\
+\frac{d}{dt}W = k_{dark}A - k_c\Omega W 
+   \\
+    \frac{d}{dt}A = k_f\Theta(t)F - k_{dark}A
+   \\
+   \frac{d}{dt}S = k_c\Omega W + \bar \mu T + \bar k_s P - (k_{em} + \mu + k_s)S
+   \\
+   \frac{d}{dt}T = \mu S + \bar k_t M - (\bar \mu + k_t)T
+   \\
+   \frac{d}{dt}P = k_sS + \bar \gamma M + k_a^eF - (k_d^p + \bar k_s + \gamma)P
+   \\
+   \frac{d}{dt}M = k_tT + \gamma P + \bar \beta E + \beta g(t) R + k_a^m F - (k_{b'} + \bar k_t + \bar \gamma + \beta g(t)+ \bar \beta + k_m^d)M
+   \\
+   \frac{d}{dt}E = \beta g(t) M + k_a^eF - (\bar \beta + k_d^e)E
+   \\
+   \frac{d}{dt}R = \bar \beta M + k_a^rF - (\beta g(t) + k_d^r)R
+   \\
+   \frac{d}{dt}F = k_d^eE + k_d^mM + k_d^rR + k_d^pP - (k_a^e + k_a^m + k_a^r + k_f\Theta(t))F
+ \end{cases}
+\end{equation*}
+
+
+
+\begin{equation*}
+ \begin{cases}
+   \frac{d}{dt}A = -k_{dark}A + k_f\Theta(t)F
+   \\
+\frac{d}{dt}W = k_{dark}A + k_{em}S - k_{ex}\cdot f(t)W\\
+
+   \frac{d}{dt}S = k_{ex}\cdot f(t)W + \bar \mu T + \bar k_s P - (k_{em} + \mu + k_s)S
+   \\
+   \frac{d}{dt}T = \mu S + \bar k_t M - (\bar \mu + k_t)T
+   \\
+   \frac{d}{dt}P = k_sS + \bar \gamma M + k_a^eF - (k_d^p + \bar k_s + \gamma)P
+   \\
+   \frac{d}{dt}M = k_tT + \gamma P + \bar \beta E + \beta g(t) R + k_a^m F - QM
+   \\
+   \frac{d}{dt}E = \beta g(t) M + k_a^eF - (\bar \beta + k_d^e)E
+   \\
+   \frac{d}{dt}R = \bar \beta M + k_a^rF - (\beta g(t) + k_d^r)R
+   \\
+   \frac{d}{dt}F = k_d^eE + k_d^mM + k_d^rR + k_d^pP - YF
+ \end{cases}
+\end{equation*}
+
+\[
+\frac{d}{dt} \mathbf{X} = A \mathbf{X}
+\]
+
+With new input data, the state vector \( \mathbf{X} \) will be represented in the form:
+
+\[
+\mathbf{X} = \begin{pmatrix}
+A
+W
+S 
+T 
+P 
+M
+E
+R
+F
+\end{pmatrix}^T
+\]
+
+And matrix gonna be \(A\):
+{\fontsize{10}{12}\selectfont
+\[
+\begin{bmatrix}
+-k_{dark} & 0 & 0 & 0 & 0 & 0 & 0 & 0 & k_f \Theta(t) \\ 
+k_{dark} & -k_{ex} f(t) & k_{em} & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+0 & k_{ex} f(t) & -(k_{em} + \mu + k_s) & \bar \mu & \bar k_s & 0 & 0 & 0 & 0 \\ 
+0 & 0 & \mu & -(\bar \mu + k_t) & 0 & \bar k_t & 0 & 0 & 0 \\ 
+0 & 0 & k_s & 0 & -(k_d^p + \bar k_s + \gamma) & \bar \gamma & 0 & 0 & k_a^e \\ 
+0 & 0 & 0 & k_t & \gamma & -Q & \bar \beta & \beta g(t) & k_a^m \\ 
+0 & 0 & 0 & 0 & 0 & \beta g(t) & -(\bar \beta + k_d^e) & 0 & k_a^e \\ 
+0 & 0 & 0 & 0 & 0 & \bar \beta & 0 & -(\beta g(t) + k_d^r) & k_a^r \\ 
+0 & 0 & 0 & 0 & k_d^p & k_d^m & k_d^e & k_d^r & -Y
+\end{bmatrix}
+\]
+}
+Where $Q = (\bar{k_t} + \bar{\gamma} + \beta \cdot g(t) + \bar{\beta} + k_m^d)$, and $Y = (3k_a^m + k_f \cdot \Theta(t))$
+\end{document}
+
+
+
