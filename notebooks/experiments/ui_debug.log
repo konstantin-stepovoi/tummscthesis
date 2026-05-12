@@ -1,0 +1,39 @@
+[21:00:03] using Basler camera source
+[21:00:03] preview crashed
+Traceback (most recent call last):
+  File "C:\Users\stepo\Desktop\Presentation\Tracker_Dev\droplet_platform_repo_public_ui_debug\src\droplet_platform\ui\preview.py", line 146, in run
+    self.source.start()
+  File "C:\Users\stepo\Desktop\Presentation\Tracker_Dev\droplet_platform_repo_public_ui_debug\src\droplet_platform\acquisition\camera.py", line 74, in start
+    raise RuntimeError("No Basler camera detected")
+RuntimeError: No Basler camera detected
+[21:00:16] using video source: .
+[21:00:16] preview crashed
+Traceback (most recent call last):
+  File "C:\Users\stepo\Desktop\Presentation\Tracker_Dev\droplet_platform_repo_public_ui_debug\src\droplet_platform\ui\preview.py", line 146, in run
+    self.source.start()
+  File "C:\Users\stepo\Desktop\Presentation\Tracker_Dev\droplet_platform_repo_public_ui_debug\src\droplet_platform\acquisition\camera.py", line 171, in start
+    raise RuntimeError(f"Cannot open video file: {self.path}")
+RuntimeError: Cannot open video file: .
+[21:00:20] using video source: .
+[21:00:20] preview crashed
+Traceback (most recent call last):
+  File "C:\Users\stepo\Desktop\Presentation\Tracker_Dev\droplet_platform_repo_public_ui_debug\src\droplet_platform\ui\preview.py", line 146, in run
+    self.source.start()
+  File "C:\Users\stepo\Desktop\Presentation\Tracker_Dev\droplet_platform_repo_public_ui_debug\src\droplet_platform\acquisition\camera.py", line 171, in start
+    raise RuntimeError(f"Cannot open video file: {self.path}")
+RuntimeError: Cannot open video file: .
+[21:01:07] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4
+[21:01:07] preview crashed
+Traceback (most recent call last):
+  File "C:\Users\stepo\Desktop\Presentation\Tracker_Dev\droplet_platform_repo_public_ui_debug\src\droplet_platform\ui\preview.py", line 148, in run
+    cv2.namedWindow(self.cfg.window_name, cv2.WINDOW_NORMAL)
+cv2.error: OpenCV(4.11.0) D:\a\opencv-python\opencv-python\opencv\modules\highgui\src\window.cpp:1284: error: (-2:Unspecified error) The function is not implemented. Rebuild the library with Windows, GTK+ 2.x or Cocoa support. If you are on Ubuntu or Debian, install libgtk2.0-dev and pkg-config, then re-run cmake or configure script in function 'cvNamedWindow'
+[21:10:28] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4
+[21:10:58] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4
+[21:11:14] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4
+[21:11:39] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4
+[21:11:47] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4
+[21:12:11] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4
+[21:12:34] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4
+[21:17:57] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4
+[21:18:17] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4

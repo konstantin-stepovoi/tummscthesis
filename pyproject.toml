@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "droplet-platform"
+version = "0.2.0"
+description = "Wide-field droplet microfluidics acquisition, detection, tracking and droplet-wise fluorescence recording"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Konstantin Stepovoi"}]
+dependencies = [
+    "numpy",
+    "opencv-python",
+    "matplotlib",
+    "scipy",
+    "pandas",
+    "ipywidgets",
+    "PyYAML",
+]
+
+[project.optional-dependencies]
+gpu = ["cupy-cuda12x"]
+basler = ["pypylon"]
+ml = ["torch"]
+all = ["pypylon", "torch", "cupy-cuda12x"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
