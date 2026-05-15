@@ -37,3 +37,15 @@ cv2.error: OpenCV(4.11.0) D:\a\opencv-python\opencv-python\opencv\modules\highgu
 [21:12:34] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4
 [21:17:57] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4
 [21:18:17] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT3.mp4
+[14:55:17] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT4.mp4
+[14:55:31] using video source: C:\Users\stepo\Desktop\Presentation\Tracker_Dev\exports\CUT4.mp4
+[14:56:07] using Basler camera source
+[14:56:07] preview crashed
+Traceback (most recent call last):
+  File "C:\Users\stepo\Desktop\Presentation\Tracker_Dev\droplet_platform_repo_public_ui_debug\src\droplet_platform\ui\preview.py", line 179, in run
+    self.source.start()
+  File "C:\Users\stepo\Desktop\Presentation\Tracker_Dev\droplet_platform_repo_public_ui_debug\src\droplet_platform\acquisition\camera.py", line 74, in start
+    raise RuntimeError("No Basler camera detected")
+RuntimeError: No Basler camera detected
+[14:56:58] using Basler camera source
+[14:57:59] using Basler camera source

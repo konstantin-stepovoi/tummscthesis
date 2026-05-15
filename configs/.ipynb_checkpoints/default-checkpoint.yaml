@@ -1,0 +1,43 @@
+camera:
+  fps: 20.0
+  exposure_ms: 50.0
+  timeout_ms: 5000
+
+source:
+  kind: camera          # camera | video
+  video_path: ""       # set in UI or config; no absolute user paths in repository
+  video_loop: true
+  fake_realtime: true
+
+detector:
+  backend: correlation       # correlation | neural
+  percentile: 89.0
+  downscale_factor: 2
+  droplet_radius_px: 100
+  min_distance: 40
+  corr_backend: fft          # ndimage | fft
+  cpu_downscale: true
+  peak_downscale: 1
+  model_path: models/droplet_net.pt
+  neural_threshold: 0.35
+
+tracker:
+  max_dist_px: 400.0
+  max_age: 20
+  vel_alpha: 0.35
+  score_alpha: 0.2
+
+preview:
+  colorize: true
+  draw_ids: true
+  draw_detections: false
+  beep_on_crossing: true
+  reset_tracker_on_start: true
+
+recording:
+  root_dir: experiments
+  duration_s: 60.0
+  roi_radius_px: 80
+  output_name: droplet_intensity.tsv
+  raw_video_name: raw_video.avi
+  overlay_video_name: overlay_video.avi
